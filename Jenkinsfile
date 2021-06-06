@@ -5,9 +5,12 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
+                withMaven {
+                    sh 'mvn clean compile'
+                }
 
                 echo "1111111111111111111111111111"
-                mvn compile
+
 
             }
         }
