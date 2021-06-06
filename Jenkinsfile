@@ -2,34 +2,36 @@ pipeline {
     agent any
 
     stages {
+
         stage ('Compile Stage') {
 
             steps {
-                withMaven {
-                    sh 'mvn clean compile'
+
+                withMaven() {
+                    sh 'mvn clean install'
                 }
-
-                echo "1111111111111111111111111111"
-
-
             }
         }
 
-        stage ('Testing Stage') {
+        stage ('Test Stage') {
 
             steps {
 
-                echo "2222222222222222222222222"
-
+                withMaven() {
+                    sh 'mvn test'
+                }
             }
         }
 
+        stage ('Cucumber Reports Stage') {
 
-        stage ('Deployment Stage') {
             steps {
 
-                echo "33333333333333333333333"
-
+                cucumber {
+                    cucumber buildStatus: "UNSTABLE",
+                        fileIncludePattern: "**/cucumber.json",
+                        jsonReportDirectory: "target"
+                }
             }
         }
     }
