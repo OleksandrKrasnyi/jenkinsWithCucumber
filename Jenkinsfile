@@ -7,6 +7,7 @@ pipeline {
             steps {
 
                 echo "1111111111111111111111111111"
+                mvn compile
 
             }
         }
