@@ -6,7 +6,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_8_1') {
-                    echo "++++++++++++++++++++++==========+++++++"
+                    echo "1111111111111111111111111111"
                 }
             }
         }
@@ -15,7 +15,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_8_1') {
-                    sh 'mvn test'
+                    echo "2222222222222222222222222"
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'maven_3_8_1') {
-                    sh 'mvn deploy'
+                    echo "33333333333333333333333"
                 }
             }
         }
